@@ -10,7 +10,10 @@ class Student:
         self.firstname = firstname
         self.lastname = lastname
         self.studN = studN
+        
+    def info(self):
         info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
+        print(info)
         return info
 
 
@@ -67,6 +70,7 @@ match mainmenu():
     case "1" :
         print("Student creation:")
         Student(input(),input(),input())
+        Student.infoinfo()
     case "2" :
         print("")
     case "3" :   

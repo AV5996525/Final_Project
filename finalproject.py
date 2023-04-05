@@ -60,24 +60,33 @@ def greeting():
                             break     
     return  userCu, userCp
 def mainmenu():
-    selection = input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card")
+    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n"))
     return selection
 
 
 greeting()
-mainmenu()
-match mainmenu():
-    case "1" :
-        print("Student creation:")
-        Student(input(),input(),input())
-        Student.infoinfo()
-    case "2" :
-        print("")
-    case "3" :   
-        print("")     
-    case "4" :
-        print("")
-    case _:
-        print("invalid response")
+dict = {}
+flag3 = False
+while (flag3==False):
+    mainmenu()
+    match mainmenu():
+        case 1 :
+            print("Student creation:")
+            population = input("Enter the number of students in your classroom:\n")
+            
+            for x in range(0,int(population)):
+                x = Student(input(),input(),input())
+                dict[x] = x.firstname,x.lastname,x.studN
+                print(dict[x])
+                
+        case 2 :
+            search = input("Enter either student name or number")
+            print(dict[1])
+        case 3 :   
+            print("")     
+        case 4 :
+            print("")
+        case _:
+            print("invalid response")
 
  

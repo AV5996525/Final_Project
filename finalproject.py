@@ -6,6 +6,11 @@
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
 
+
+
+
+userCu = {}
+userCp = {}
 def greeting():
     print("Welcome to the Conestoga Student DataBase, only permited staff members may access this database!")
     flag1 = False
@@ -28,22 +33,29 @@ def greeting():
             while (flag2 == False):
                 logC = input("Enter 'L' to login or if you do not have an account type in 'C' to create a new account ")
                 if logC == 'C' or logC == 'c':
-                    userC = {}
+                    
                     userN = input("Enter your username:\n")
                     userP = input("Enter your password:\n")
-                    userC = {"Username": "{}","Password":"{}".format(userN,userP)}
+                    userCu = {"Username": "{}".format(userN)}
+                    userCp = {"Password":"{}".format(userP)}
+                    
                     continue
                 elif logC == 'L' or logC == 'L':
                     userV = input("Enter your username:\n")
                     passV = input("Enter your password:\n")
-                    if userV == userC["Username"] and passV == userC["Password"]:
+                    if userV == userCu["Username"] and passV == userCp["Password"]:
                         print("Login succesful!")
-                        break
-            
-    return userN, userP, userC
+                        flag2 = True
+                        if flag2 == True:
+                            break     
+    return  userCu, userCp
+def mainmenu():
+    selection = input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card")
 
 
 
 greeting()
+mainmenu()
+
 
 

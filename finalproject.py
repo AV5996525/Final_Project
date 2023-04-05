@@ -58,11 +58,22 @@ def greeting():
     return  userCu, userCp
 def mainmenu():
     selection = input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card")
-
+    return selection
 
 
 greeting()
 mainmenu()
+match mainmenu():
+    case "1" :
+        print("Student creation:")
+        Student(input(),input(),input())
+    case "2" :
+        print("")
+    case "3" :   
+        print("")     
+    case "4" :
+        print("")
+    case _:
+        print("invalid response")
 
-
-
+ 

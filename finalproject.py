@@ -25,12 +25,21 @@ def greeting():
             print("Please enter Yes or No")
         finally:
             flag2 = False
-            logC = input("Enter your log info, if you do not have an account type in 'C' to create a new account ")
-            if logC == 'C' or logC == 'c':
-                userC = {}
-                userN = input("Enter your username:\n")
-                userP = input("Enter your password:\n")
-                userC = {"Username": "{}","Password":"{}".format(userN,userP)}
+            while (flag2 == False):
+                logC = input("Enter 'L' to login or if you do not have an account type in 'C' to create a new account ")
+                if logC == 'C' or logC == 'c':
+                    userC = {}
+                    userN = input("Enter your username:\n")
+                    userP = input("Enter your password:\n")
+                    userC = {"Username": "{}","Password":"{}".format(userN,userP)}
+                    continue
+                elif logC == 'L' or logC == 'L':
+                    userV = input("Enter your username:\n")
+                    passV = input("Enter your password:\n")
+                    if userV == userC["Username"] and passV == userC["Password"]:
+                        print("Login succesful!")
+                        break
+            
     return userN, userP, userC
 
 
@@ -38,4 +47,3 @@ def greeting():
 greeting()
 
 
-print(userC)

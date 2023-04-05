@@ -5,6 +5,13 @@
 #Purpose: This program will store an entire student database. Grades, notes, report cards, progress, academic offenses, and status will be all recorded. 
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
+class Student:
+    def __init__(self, firstname, lastname, studN):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.studN = studN
+        info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
+        return info
 
 
 

@@ -15,11 +15,6 @@ class Student:
         info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
         print(info)
         return info
-    
-
-
-
-
 userCu = {}
 userCp = {}
 def greeting():
@@ -61,16 +56,17 @@ def greeting():
                             break     
     return  userCu, userCp
 def mainmenu():
-    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n"))
+    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Quit\n"))
     return selection
 
-
+#Main Body
 greeting()
 dict = {}
+dict2 = {}
 flag3 = False
 while (flag3==False):
-    mainmenu()
-    match mainmenu():
+    mainmenu()#Calling main menu
+    match mainmenu(): #Matching input using switch case selection
         case 1 :
             print("Student creation:")
             population = input("Enter the number of students in your classroom:\n")
@@ -81,16 +77,22 @@ while (flag3==False):
                 print(x)
                 dict[x] = x.firstname,x.lastname,x.studN
                 print(dict[x])
+            for x in dict.values():
+                dict2 = x
+                     
                 
         case 2 :
             search = input("Enter either student name or number")
             for x in dict.values():
                 print(x)
-            
+            print(dict2)
         case 3 :   
             print("")     
         case 4 :
             print("")
+        case 5 :
+            exit()
+            break
         case _:
             print("invalid response")
 

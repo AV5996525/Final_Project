@@ -7,7 +7,7 @@
 #Metric data will also be available in the form of a graph for analysis
 
 
-
+import os
 userCu = {}
 student = {}
 userCp = {}
@@ -85,7 +85,7 @@ while (flag3==False):
             
             elif classSel == 3:
                 gradeEntry = input("Enter the INFO1385 grade value:\n")
-                student[gradeM]['1385'] = int(gradeEntry) 
+                student[gradeM]['INFO1385'] = int(gradeEntry) 
             elif classSel == 4:
                 print(student.items())
                 print(student)       
@@ -93,7 +93,23 @@ while (flag3==False):
             print("")   
             print(len(student))  
         case 4 :
-            print("")
+            confirmR = input("Are you sure you want to export a report card for all students?\n")
+            if confirmR == 'Y':
+             newFile = open("reportcard.txt", 'w')    
+             
+            newFile.write("Student List: ")
+                
+            newFile.write('\n')
+            for x,p in (student.items()):
+                newFile.write("Student # ")
+                newFile.write("{}\t{}\n".format(str(x),str(p)))
+                    #newFile.write(str(g))
+                    #newFile.write("{}\n".format(str(x)))
+                    #newFile.write("-------------------------------\n")
+            newFile.close()
+            print("The summary txt file has been succesfully written to ", os.getcwd()) #Displaying file pathway
+            print("File name: ", newFile) 
+
         case 5 :
             print("Enrollment management:")
             choice = int(input("1. Delete Student\n2. Add Student\n:"))

@@ -1,3 +1,0 @@
-Student List: 
-Student # 1	{'Firstname': '1', 'Lastname': '1', 'PROG1783': 99}
-Student # 2	{'Firstname': 'baby', 'Lastname': 'boy', 'INFO1385': 88}

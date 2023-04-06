@@ -1,7 +1,7 @@
 #Name:          finalproject.py
 #Author:        AJ Varatharajan
 #Date Created:  April 5, 2023
-#Date Last Modified: April 6, 2023
+#Date Last Modified: April 8, 2023
 #Purpose: This program will store an entire student database. Grades, notes, report cards, progress, academic offenses, and status will be all recorded. 
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
@@ -11,10 +11,10 @@ class Student:
         self.lastname = lastname
         self.studN = studN
         
-    def info(self):
-        info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
-        print(info)
-        return info
+    #def info(self):
+        #info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
+        #print(info)
+        #return info
 userCu = {}
 userCp = {}
 def greeting():
@@ -56,7 +56,7 @@ def greeting():
                             break     
     return  userCu, userCp
 def mainmenu():
-    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Quit\n"))
+    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6.Quit\n"))
     return selection
 
 #Main Body
@@ -95,6 +95,8 @@ while (flag3==False):
         case 4 :
             print("")
         case 5 :
+            print("Enrollment management:")
+        case 6 :
             exit()
             break
         case _:

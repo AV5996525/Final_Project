@@ -3,6 +3,7 @@
 #Date Created:  April 5, 2023
 #Date Last Modified: April 8, 2023
 #Purpose: This program will store an entire student database. Grades, notes, report cards are recorded and can be viewed or modified. 
+#Can create as many students and assign as many as three programs: PROG1783, INFO1145, INFO1385
 #A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
 import tabulate
@@ -136,7 +137,9 @@ while (flag3==False):
                 mainmenu()    
         case 6 :
             gradeMR = int(input("Enter the student number associated with student you would like to view:\n"))
-            classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeMR]['Firstname']),(student[gradeMR]['Lastname']))))
+
+            print(tabulate([[(student[gradeMR]['Firstname'])], [(student[gradeMR]['Lastname'])], ["ok"]], headers = ["Student Information:"])) #output 
+            print(tabulate([[('')]] , headers = ["Course's selected:"]))
             break
         case 7 :
             exit()

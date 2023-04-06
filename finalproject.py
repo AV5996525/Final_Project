@@ -2,10 +2,10 @@
 #Author:        AJ Varatharajan
 #Date Created:  April 5, 2023
 #Date Last Modified: April 8, 2023
-#Purpose: This program will store an entire student database. Grades, notes, report cards are recorded. 
+#Purpose: This program will store an entire student database. Grades, notes, report cards are recorded and can be viewed or modified. 
 #A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
-
+import tabulate
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
  #intializing empty dictionary
@@ -60,7 +60,7 @@ dict2 = {}
 flag3 = False
 flag4 = False
 while (flag3==False):
-    selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. Quit\n"))
+    selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
     match selection: #Matching input using switch case selection
         case 1 :
             print("Student creation - Student database will be subject to overwriting.")
@@ -135,6 +135,10 @@ while (flag3==False):
             elif choice == 3:
                 mainmenu()    
         case 6 :
+            gradeMR = int(input("Enter the student number associated with student you would like to view:\n"))
+            classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeMR]['Firstname']),(student[gradeMR]['Lastname']))))
+            break
+        case 7 :
             exit()
             break
         case _:

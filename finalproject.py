@@ -5,6 +5,7 @@
 #Purpose: This program will store an entire student database. Grades, notes, report cards, progress, academic offenses, and status will be all recorded. 
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
+
 class Student:
     def __init__(self, firstname, lastname, studN):
         self.firstname = firstname
@@ -88,8 +89,11 @@ while (flag3==False):
             for x,y in dict2.items():
                 if x == int(gradeM):
                     qq = ("{}".format(classSel),)
-                    y += qq
-                    y += P
+                    mm = ("PROG1783",)
+                    qq += mm
+                    zz = tuple(zip(qq[:-1], qq[1:]))
+                    y += zz
+                    #y += P
                     print(y)
             print(dict2.items())           
         case 3 :   

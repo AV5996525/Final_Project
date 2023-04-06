@@ -58,7 +58,7 @@ def greeting():
 def mainmenu():
     selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6.Quit\n"))
     return selection
-
+P = ("Programming",)
 #Main Body
 greeting()
 dict = {}
@@ -92,6 +92,14 @@ while (flag3==False):
                     fHolder = y[0]
                     lHolder = y[1]
             classSel = input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format(fHolder,lHolder))
+            for x,y in dict2.items():
+                if x == int(gradeM):
+                    qq = ("{}".format(classSel),)
+                    y += qq
+                    y += P
+                    print(y)
+            print(dict2.items())
+            
         case 3 :   
             #for x,y in dict2.items():
                 #print(x)

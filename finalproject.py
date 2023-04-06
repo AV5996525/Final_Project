@@ -6,7 +6,7 @@
 #Can create as many students and assign as many as three programs: PROG1783, INFO1145, INFO1385
 #A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
-import tabulate
+
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
  #intializing empty dictionary
@@ -50,6 +50,16 @@ def greeting(): #login function
                         if flag2 == True:
                             break     
     return  userCu, userCp
+def report(a,b,c,d,e,f):
+    print("Student summary for {} {}\n".format(a,b).center(40))
+    print('---------------------------------------'.center(40))
+    print("Student Number #{}\n".format(c).ljust(40))
+    print("Course grades: \n Programming - PROG1783: {}% \n IT Documentation - INFO1145: {}% \n Networking - INFO1385: {}%\n".format(d,e,f).ljust(40))
+    avg = ((float(d)+float(e)+float(f))/3)
+    percentage = "{:.0%}".format(avg)
+    print("Course average: {}\n".format(percentage).ljust(40))
+    return percentage
+
 def mainmenu(): #main menu function
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6. Quit\n"))
     return selection
@@ -137,10 +147,17 @@ while (flag3==False):
                 mainmenu()    
         case 6 :
             gradeMR = int(input("Enter the student number associated with student you would like to view:\n"))
-
-            print(tabulate([[(student[gradeMR]['Firstname'])], [(student[gradeMR]['Lastname'])], ["ok"]], headers = ["Student Information:"])) #output 
-            print(tabulate([[('')]] , headers = ["Course's selected:"]))
-            break
+            a = student[gradeMR]['Firstname']
+            b = student[gradeMR]['Lastname']
+            c = ''
+            d = student[gradeMR]['PROG1783']
+            e = student[gradeMR]['INFO1145']
+            f = student[gradeMR]['INFO1385']
+            for x,p in (student.items()):
+                if x == gradeMR:
+                    c = x
+            report(a,b,c,d,e,f)
+            
         case 7 :
             exit()
             break

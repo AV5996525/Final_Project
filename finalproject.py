@@ -6,7 +6,7 @@
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
 
-
+import pip install matplotlib
 import os
 userCu = {}
 student = {}
@@ -50,7 +50,7 @@ def greeting():
                             break     
     return  userCu, userCp
 def mainmenu():
-    selection = int(input("Pick from one of the following options:\n1. Create Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6.Quit\n"))
+    selection = int(input("Pick from one of the following options:\n1. Create Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n 6.Quit\n"))
     return selection
 #Main Body
 #greeting()
@@ -112,7 +112,7 @@ while (flag3==False):
 
         case 5 :
             print("Enrollment management:")
-            choice = int(input("1. Delete Student\n2. Add Student\n:"))
+            choice = int(input("1. Delete Student\n2. Add Student\n3. Exit to main menu\n:"))
             if choice == 1:
                 searchD = int(input("Enter the student number associated with student you would like to delete:\n"))
                 confirmD = input("Are you sure you want to delete {} {}".format(student[searchD]['Firstname'],student[searchD]['Lastname']))

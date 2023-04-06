@@ -81,7 +81,7 @@ while (flag3==False):
                 #dict2[x] 
                 for y in dict.values():
                     #dict2[x] = y
-                    dict2[x] = y
+                    dict2[x+1] = y
         
                      
                 

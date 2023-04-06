@@ -6,15 +6,10 @@
 #The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
 
-class Student:
-    def __init__(self, firstname, lastname, studN, prog1783,info1145,info1385):
-        self.firstname = firstname
-        self.lastname = lastname
-        self.studN = studN
-        self.prog1783 = prog1783
-        self.info1145 = info1145
-        self.info1385 = info1385
+
+
 userCu = {}
+student = {}
 userCp = {}
 def greeting():
     print("Welcome to the Conestoga Student DataBase, only permited staff members may access this database!")
@@ -59,7 +54,8 @@ def mainmenu():
     return selection
 #Main Body
 #greeting()
-dict = {"First name": '', "Last name": '', "Grade": '', "PROG1783": '', "INFO1145": '', "INFO1385": '' }
+final = {}
+dict = {}
 dict2 = {}
 flag3 = False
 flag4 = False
@@ -69,82 +65,31 @@ while (flag3==False):
         case 1 :
             print("Student creation - Add students at anytime without any overwriting.")
             population = input("Enter the number of students in your classroom:\n")
-            
             for x in range(0,int(population)):
-                x = Student(input(),input(),input(),input(),input(),input())
-                
-                print(x)
-                dict[x] = x.firstname,x.lastname,x.studN,x.prog1783,x.info1145,x.info1385
-                print(dict[x])
-            for x,y in zip(range(len(dict)),dict.values()):
-                dict2[x+1] = y          
-        case 2 :
-            #Make exeption to prevent user from accesing grades w/o making student list
-            #print(dict2)
-            #print(dict2.keys())
-            #print(dict2.values())
-            gradeM = input("Enter the student number associated with student you would like to review:\n")
-            for x,y in dict2.items():
-                if x == int(gradeM):
-                    fHolder = y[0]
-                    lHolder = y[1]
+                student[x+1] = {}
+                firstname = input("Enter first name:")
+                lastname = input("Enter last name")
+                student[x+1] = {"Firstname": firstname, "Lastname":lastname}
+            print(student.items())   
+            continue    
+        case 2 :           
+            gradeM = int(input("Enter the student number associated with student you would like to review:\n"))
+            classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeM]['Firstname']),(student[gradeM]['Lastname']))))
+            if classSel == 1:
+                gradeEntry = input("Enter the PROG1783 grade value:\n")
+                student[gradeM]['PROG1783'] = int(gradeEntry) 
+
+            elif classSel == 2:
+                gradeEntry = input("Enter the INFO1145 grade value:\n")
+                student[gradeM]['INFO1145'] = int(gradeEntry) 
             
-            while(flag4 == False) :
-                classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format(fHolder,lHolder)))
-                if classSel == 1:
-                    gradeEntry = input("Enter the PROG1783 grade value:\n")
-                    for x,y in dict2.items():
-                        if x == int(gradeM):
-                            qq = ("{}".format(gradeEntry),)
-                            mm = ("PROG1783",)
-                            mm += qq
-                            zz = tuple(zip(mm[:-1], mm[1:]))
-                            list(dict2)
-                            y[4] = zz
-                            tuple(dict2)
-                            #y += P
-                            print(y)
-                elif classSel == 2:
-                    gradeEntry = input("Enter the INFO1145 grade value:\n")
-                    for x,y in dict2.items():
-                        if x == int(gradeM):
-                            qq2 = ("{}".format(gradeEntry),)
-                            mm2 = ("INFO1145",)
-                            mm2 += qq2
-                            zz2 = tuple(zip(mm2[:-1], mm2[1:]))
-                            list(dict2)
-                            y[5] = zz2
-                            tuple(dict2)
-                            #y += P
-                            print(y)
-                elif classSel == 3:
-                    gradeEntry = input("Enter the INFO1385 grade value:\n")
-                    for x,y in dict2.items():
-                        if x == int(gradeM):
-                            qq = ("{}".format(gradeEntry),)
-                            mm = ("INFO1385",)
-                            mm += qq
-                            zz = tuple(zip(mm[:-1], mm[1:]))
-                            list(dict2)
-                            y[6] = zz
-                            tuple(dict2)
-                            #y += P
-                            print(y)
-                #print(dict2.items())           
+            elif classSel == 3:
+                gradeEntry = input("Enter the INFO1385 grade value:\n")
+                student[gradeM]['1385'] = int(gradeEntry) 
+            elif classSel == 4:
+                print(student.items())
+                print(student)       
         case 3 :   
-            #for x,y in dict2.items():
-                #print(x)
-                #print(y[2])
-                #for z in y:
-                    #print(y[int(gradeM)])
-                    #print(z[int(gradeM)])
-            #for k, v in dict2.items():
-                #if v[2] == 2:
-                     #print(k)
-            
-                #for z in y:
-                    #print(y[int(gradeM)])
-                    #print(z[int(gradeM)])         
             print("")     
         case 4 :
             print("")

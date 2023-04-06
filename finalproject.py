@@ -50,7 +50,7 @@ def greeting():
                             break     
     return  userCu, userCp
 def mainmenu():
-    selection = int(input("Pick from one of the following options:\n1. Student Profile Creation \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6.Quit\n"))
+    selection = int(input("Pick from one of the following options:\n1. Create Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6.Quit\n"))
     return selection
 #Main Body
 #greeting()
@@ -90,11 +90,30 @@ while (flag3==False):
                 print(student.items())
                 print(student)       
         case 3 :   
-            print("")     
+            print("")   
+            print(len(student))  
         case 4 :
             print("")
         case 5 :
             print("Enrollment management:")
+            choice = int(input("1. Delete Student\n2. Add Student\n:"))
+            if choice == 1:
+                searchD = int(input("Enter the student number associated with student you would like to delete:\n"))
+                confirmD = input("Are you sure you want to delete {} {}".format(student[searchD]['Firstname'],student[searchD]['Lastname']))
+                if confirmD == 'Y':
+                    del student[searchD]
+                    mainmenu()
+                elif confirmD == 'N':
+                    pass
+            elif choice == 2:    
+                student[int(len(student))+1] = {}
+                firstnameC = input("Enter first name:")
+                lastnameC = input("Enter last name")
+                student[int(len(student))+1] = {"Firstname": firstnameC, "Lastname":lastnameC}
+                print(student.items())
+                mainmenu()
+            elif choice == 3:
+                mainmenu()    
         case 6 :
             exit()
             break

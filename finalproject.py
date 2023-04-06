@@ -77,14 +77,18 @@ while (flag3==False):
                 print(x)
                 dict[x] = x.firstname,x.lastname,x.studN
                 print(dict[x])
-            for x in dict.values():
-                dict2 = x
+            for x in range (0,int(population)):
+                #dict2[x] 
+                for y in dict.values():
+                    #dict2[x] = y
+                    dict2[x] = y
+        
                      
                 
         case 2 :
-            search = input("Enter either student name or number")
-            for x in dict.values():
-                print(x)
+            #search = input("Enter either student name or number")
+            #for x in dict.values():
+                #print(x)
             print(dict2)
         case 3 :   
             print("")     

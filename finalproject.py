@@ -8,14 +8,14 @@
 
 import matplotlib.pyplot as plt
 import os
-userCu = {}
-student = {}
-userCp = {}
-def greeting():
+userCu = {} #intializing empty dictionary
+student = {} #intializing empty dictionary
+userCp = {} #intializing empty dictionary
+def greeting(): #login function
     print("Welcome to the Conestoga Student DataBase, only permited staff members may access this database!")
     flag1 = False
     while (flag1 == False):
-        try:
+        try: #try block for potential value error
             logQ = input("Are you ready to log in?")
             if logQ.isdecimal():
                 raise ValueError
@@ -26,9 +26,9 @@ def greeting():
                 flag1 = True
                 if flag1 == True:
                     break
-        except ValueError:
+        except ValueError: #exception block
             print("Please enter Yes or No")
-        finally:
+        finally: #Final block, code will run regardless.
             flag2 = False
             while (flag2 == False):
                 logC = input("Enter 'L' to login or if you do not have an account type in 'C' to create a new account ")
@@ -49,8 +49,8 @@ def greeting():
                         if flag2 == True:
                             break     
     return  userCu, userCp
-def mainmenu():
-    selection = int(input("Pick from one of the following options:\n1. Create Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n 6.Quit\n"))
+def mainmenu(): #main menu function
+    selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6. Quit\n"))
     return selection
 #Main Body
 #greeting()
@@ -63,13 +63,13 @@ while (flag3==False):
     mainmenu()#Calling main menu
     match mainmenu(): #Matching input using switch case selection
         case 1 :
-            print("Student creation - Add students at anytime without any overwriting.")
+            print("Student creation - Student database will be subject to overwriting.")
             population = input("Enter the number of students in your classroom:\n")
-            for x in range(0,int(population)):
-                student[x+1] = {}
+            for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
+                student[x+1] = {} #intializing empty nested entry
                 firstname = input("Enter first name:")
                 lastname = input("Enter last name")
-                student[x+1] = {"Firstname": firstname, "Lastname":lastname}
+                student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student
             print(student.items())   
             continue    
         case 2 :           

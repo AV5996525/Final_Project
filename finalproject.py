@@ -10,11 +10,6 @@ class Student:
         self.firstname = firstname
         self.lastname = lastname
         self.studN = studN
-        
-    #def info(self):
-        #info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
-        #print(info)
-        #return info
 userCu = {}
 userCp = {}
 def greeting():
@@ -78,9 +73,7 @@ while (flag3==False):
                 dict[x] = x.firstname,x.lastname,x.studN
                 print(dict[x])
             for x,y in zip(range(len(dict)),dict.values()):
-                dict2[x+1] = y 
-                
-                
+                dict2[x+1] = y          
         case 2 :
             #Make exeption to prevent user from accesing grades w/o making student list
             #print(dict2)
@@ -98,8 +91,7 @@ while (flag3==False):
                     y += qq
                     y += P
                     print(y)
-            print(dict2.items())
-            
+            print(dict2.items())           
         case 3 :   
             #for x,y in dict2.items():
                 #print(x)
@@ -114,9 +106,6 @@ while (flag3==False):
                 #for z in y:
                     #print(y[int(gradeM)])
                     #print(z[int(gradeM)])         
-             
-            
-            
             print("")     
         case 4 :
             print("")

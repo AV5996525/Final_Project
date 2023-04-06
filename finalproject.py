@@ -68,7 +68,7 @@ while (flag3==False):
     mainmenu()#Calling main menu
     match mainmenu(): #Matching input using switch case selection
         case 1 :
-            print("Student creation:")
+            print("Student creation - Add students at anytime without any overwriting.")
             population = input("Enter the number of students in your classroom:\n")
             
             for x in range(0,int(population)):
@@ -77,13 +77,9 @@ while (flag3==False):
                 print(x)
                 dict[x] = x.firstname,x.lastname,x.studN
                 print(dict[x])
-            for x in range (0,int(population)):
-                #dict2[x] 
-                for y in dict.values():
-                    #dict2[x] = y
-                    dict2[x+1] = y
-        
-                     
+            for x,y in zip(range(len(dict)),dict.values()):
+                dict2[x+1] = y 
+                
                 
         case 2 :
             #search = input("Enter either student name or number")

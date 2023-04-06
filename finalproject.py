@@ -2,11 +2,11 @@
 #Author:        AJ Varatharajan
 #Date Created:  April 5, 2023
 #Date Last Modified: April 8, 2023
-#Purpose: This program will store an entire student database. Grades, notes, report cards, progress, academic offenses, and status will be all recorded. 
-#The database will alert the user if a student is failing. A report card may be generated and saved to a text file named 'reportcard.txt'
+#Purpose: This program will store an entire student database. Grades, notes, report cards are recorded. 
+#A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
 
-import pip install matplotlib
+import matplotlib.pyplot as plt
 import os
 userCu = {}
 student = {}
@@ -90,8 +90,15 @@ while (flag3==False):
                 print(student.items())
                 print(student)       
         case 3 :   
-            print("")   
-            print(len(student))  
+            gradeG = int(input("Enter the student number associated with student you would like to generate a graph for:\n"))
+            left = [1,2,3]
+            height = [student[gradeG]['PROG1783'],student[gradeG]['INFO1145'],student[gradeG]['INFO1385']] 
+            tick_label = ['PROG1783','INFO1145','INFO1385'] 
+            plt.bar(left, height, tick_label = tick_label,width = 0.8, color = ['red', 'green' , 'blue'])
+            plt.xlabel('Course')
+            plt.ylabel('Grade %')
+            plt.title("Progress Report: " + student[gradeG]['Firstname'] + " " + student[gradeG]['Lastname'])
+            plt.show()
         case 4 :
             confirmR = input("Are you sure you want to export a report card for all students?\n")
             if confirmR == 'Y':

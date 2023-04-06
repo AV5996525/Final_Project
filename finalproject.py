@@ -15,6 +15,7 @@ class Student:
         info = {"First name": self.firstname,"Last name": self.lastname, "Student number": self.studN}
         print(info)
         return info
+    
 
 
 
@@ -76,12 +77,16 @@ while (flag3==False):
             
             for x in range(0,int(population)):
                 x = Student(input(),input(),input())
+                
+                print(x)
                 dict[x] = x.firstname,x.lastname,x.studN
                 print(dict[x])
                 
         case 2 :
             search = input("Enter either student name or number")
-            print(dict[1])
+            for x in dict.values():
+                print(x)
+            
         case 3 :   
             print("")     
         case 4 :

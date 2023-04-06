@@ -82,10 +82,28 @@ while (flag3==False):
                 
                 
         case 2 :
-            #search = input("Enter either student name or number")
-            #for x in dict.values():
+            #print(dict2)
+            #print(dict2.keys())
+            #print(dict2.values())
+            gradeM = input("Enter the student number associated with student you would like to review:\n")
+            #for x,y in dict2.items():
                 #print(x)
-            print(dict2)
+                #print(y[2])
+                #for z in y:
+                    #print(y[int(gradeM)])
+                    #print(z[int(gradeM)])
+            #for k, v in dict2.items():
+                #if v[2] == 2:
+                     #print(k)
+            for x,y in dict2.items():
+                if x == int(gradeM):
+                    print(y)
+                #for z in y:
+                    #print(y[int(gradeM)])
+                    #print(z[int(gradeM)])         
+             
+            
+            classSel = input("Enter the course you wish to modify the grade for student {} : /n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n")
         case 3 :   
             print("")     
         case 4 :

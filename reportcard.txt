@@ -1,9 +1,9 @@
-Date/Time: 2023-04-06 20:41:27.363916
-Student summary for ALEK RAD
-Student Number #2
+Date/Time: 2023-04-06 21:04:56.251354
+Student summary for AJ BOB
+Student Number #1
   Courses:
            
  Programming - PROG1783: 44% 
  IT Documentation - INFO1145: 55% 
- Networking - INFO1385: 66%
-Course average: 55.00%
+ Networking - INFO1385: 55%
+Course average: 51.33%

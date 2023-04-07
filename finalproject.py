@@ -83,19 +83,29 @@ dict = {}
 dict2 = {}
 flag3 = False
 flag4 = False
+flag5 = False
 while (flag3==False):
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
     match selection: #Matching input using switch case selection
         case 1 :
             print("Student creation - Student database will be subject to overwriting.")
-            population = input("Enter the number of students in your classroom:\n")
-            for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
-                student[x+1] = {} #intializing empty nested entry
-                firstname = input("Enter Student #{} first name:".format(x+1))
-                lastname = input("Enter Student #{} last name".format(x+1))
-                student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student
-            print(student.items())   
-            continue    
+            while(flag5 == False):
+                try:
+                    population = input("Enter the number of students in your classroom:\n")
+                    if not population.isdigit():
+                        raise ValueError
+                    for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
+                        student[x+1] = {} #intializing empty nested entry
+                        firstname = input("Enter Student #{} first name:".format(x+1))
+                        lastname = input("Enter Student #{} last name".format(x+1))
+                        student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student 
+                        flag5 = True  
+                    break 
+                except ValueError:
+                    print("Integers only!")
+                finally:
+                    pass
+                      
         case 2 :           
             gradeM = int(input("Enter the student number associated with student you would like to review:\n"))
             classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeM]['Firstname']),(student[gradeM]['Lastname'])))) #user input to determine which course will be modified for specific user obtained from accessing dictionary key

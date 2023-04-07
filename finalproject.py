@@ -48,7 +48,7 @@ flag5 = False
 while (flag3==False):
     print("Welcome to the Conestoga Student Database:\n")
     print("Create a Student Database and assign course grades to Student's to generate reports!")
-    selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
+    selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Student Progress Graph \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
     match selection: #Matching input using switch case selection
         case 1 :
             print("Student creation - Student database will be subject to overwriting.")

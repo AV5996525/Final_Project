@@ -11,7 +11,7 @@ from datetime import date
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
 student = {} #intializing empty dictionary
-def report(a,b,c,d,e,f):
+def report(a,b,c,d,e,f): #creation function to print student report to console
     print("Student summary for {} {}\n".format(a,b).center(40))
     print('---------------------------------------'.center(40))
     print("Student Number #{}\n".format(c).ljust(40))
@@ -20,8 +20,8 @@ def report(a,b,c,d,e,f):
     percentage = "{:.2%}".format(avg)
     print("Course average: {}\n".format(percentage).ljust(40))
     return percentage
-def reportF(a,b,c,d,e,f,g):
-    newFile = open("reportcard.txt", 'w')
+def reportF(a,b,c,d,e,f,g): #creating function to write file 
+    newFile = open("reportcard.txt", 'w') #creating text gile named 'reportcard.txt' 
     newFile.write("Date/Time: {}\n".format(g)) 
     newFile.write("Student summary for {} {}\n".format(a,b).center(20))
     newFile.write("Student Number #{}\n".format(c).ljust(20))
@@ -30,7 +30,7 @@ def reportF(a,b,c,d,e,f,g):
     avg = (((float(d)+float(e)+float(f))/3)/100)
     percentage = "{:.2%}".format(avg)
     newFile.write("Course average: {}\n".format(percentage).ljust(20))
-    newFile.close()
+    newFile.close()#close file as per good I/O file management
     print("The summary txt file has been succesfully written to ", os.getcwd()) #Displaying file pathway
     print("File name: ", newFile) #displaying file name
     return newFile
@@ -42,7 +42,7 @@ def mainmenu(): #main menu function
 final = {}
 dict = {}
 dict2 = {}
-flag3 = False
+flag3 = False #establishing flag for flow control
 flag4 = False
 flag5 = False
 while (flag3==False):
@@ -161,10 +161,10 @@ while (flag3==False):
             report(a,b,c,d,e,f)
             
         case 7 :
-            exit()
+            exit() #Exit program
             break
             
         case _:
-            print("invalid response")
+            print("invalid response") #input validation
 
  

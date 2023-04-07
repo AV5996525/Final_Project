@@ -11,44 +11,6 @@ from datetime import date
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
 student = {} #intializing empty dictionary
-def greeting(): #login function
-    print("Welcome to the Conestoga Student DataBase, only permited staff members may access this database!")
-    flag1 = False
-    while (flag1 == False):
-        try: #try block for potential value error
-            logQ = input("Are you ready to log in?")
-            if logQ.isdecimal():
-                raise ValueError
-            elif logQ == "no" or logQ == "No" or logQ == "N" or logQ == "n":
-                exit()
-                break
-            elif logQ == "yes" or logQ == "Yes" or logQ == "Y" or logQ == "y":
-                flag1 = True
-                if flag1 == True:
-                    break
-        except ValueError: #exception block
-            print("Please enter Yes or No")
-        finally: #Final block, code will run regardless.
-            flag2 = False
-            while (flag2 == False):
-                logC = input("Enter 'L' to login or if you do not have an account type in 'C' to create a new account ")
-                if logC == 'C' or logC == 'c':
-                    
-                    userN = input("Enter your username:\n")
-                    userP = input("Enter your password:\n")
-                    userCu = {"Username": "{}".format(userN)}
-                    userCp = {"Password":"{}".format(userP)}
-                    
-                    continue
-                elif logC == 'L' or logC == 'L':
-                    userV = input("Enter your username:\n")
-                    passV = input("Enter your password:\n")
-                    if userV == userCu["Username"] and passV == userCp["Password"]:
-                        print("Login succesful!")
-                        flag2 = True
-                        if flag2 == True:
-                            break     
-    return  userCu, userCp
 def report(a,b,c,d,e,f):
     print("Student summary for {} {}\n".format(a,b).center(40))
     print('---------------------------------------'.center(40))
@@ -77,7 +39,6 @@ def mainmenu(): #main menu function
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6. Quit\n"))
     return selection
 #Main Body
-greeting()
 final = {}
 dict = {}
 dict2 = {}
@@ -85,6 +46,7 @@ flag3 = False
 flag4 = False
 flag5 = False
 while (flag3==False):
+    print("Welcome to the Conestoga Student Database:\n")
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
     match selection: #Matching input using switch case selection
         case 1 :

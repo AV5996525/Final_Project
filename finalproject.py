@@ -4,7 +4,7 @@
 #Date Last Modified: April 8, 2023
 #Purpose: This program will store an entire student database. Grades, notes, report cards are recorded and can be viewed or modified. 
 #Can create as many students and assign as many as three programs: PROG1783, INFO1145, INFO1385
-#A report card may be generated and saved to a text file named 'reportcard.txt'
+#A report card may be generated and saved to a custom named text file named '{}{}reportcard.txt' ,where  the Student's first name and last name will be utilized to create a custom txt file.
 #Metric data will also be available in the form of a graph for analysis
 from datetime import datetime
 from datetime import date
@@ -31,6 +31,8 @@ def reportF(a,b,c,d,e,f,g): #creating function to write file
     percentage = "{:.2%}".format(avg)
     newFile.write("Course average: {}\n".format(percentage).ljust(20))
     newFile.close()#close file as per good I/O file management
+    os.rename('reportcard.txt','{}{}reportcard.txt'.format(a,b))
+    newFile = ('{}{}reportcard.txt'.format(a,b))
     print("The summary txt file has been succesfully written to ", os.getcwd()) #Displaying file pathway
     print("File name: ", newFile) #displaying file name
     return newFile

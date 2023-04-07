@@ -47,6 +47,7 @@ flag4 = False
 flag5 = False
 while (flag3==False):
     print("Welcome to the Conestoga Student Database:\n")
+    print("Create a Student Database and assign course grades to Student's to generate reports!")
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Modify Grades \n3. Class Progression Chart \n4. Export Report Card\n5. Enrollment Management\n6. View Individual Student Report\n7. Quit\n"))
     match selection: #Matching input using switch case selection
         case 1 :
@@ -58,18 +59,22 @@ while (flag3==False):
                         raise ValueError
                     for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
                         student[x+1] = {} #intializing empty nested entry
-                        firstname = input("Enter Student #{} first name:".format(x+1))
-                        lastname = input("Enter Student #{} last name".format(x+1))
+                        firstname = input("Enter Student #{} first name: ".format(x+1))
+                        lastname = input("Enter Student #{} last name: ".format(x+1))
                         student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student 
                         flag5 = True  
-                    break 
+                    break
                 except ValueError:
                     print("Integers only!")
                 finally:
                     pass
                       
         case 2 :           
+            if len(student) == 0:
+                print("Error: Create Student Database first! Then Assign All Grades!")
+                continue
             gradeM = int(input("Enter the student number associated with student you would like to review:\n"))
+            
             classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeM]['Firstname']),(student[gradeM]['Lastname'])))) #user input to determine which course will be modified for specific user obtained from accessing dictionary key
             if classSel == 1:
                 gradeEntry = input("Enter the PROG1783 grade value:\n")
@@ -86,7 +91,11 @@ while (flag3==False):
                 print(student.items())
                 print(student)       
         case 3 :   
+            if len(student) == 0:
+                print("Error: Create Student Database and assign all courses to generate an individual graph for!")
+                continue
             gradeG = int(input("Enter the student number associated with student you would like to generate a graph for:\n"))
+            
             left = [1,2,3] #creating bar for each course
             height = [student[gradeG]['PROG1783'],student[gradeG]['INFO1145'],student[gradeG]['INFO1385']] #hieght values obtained from values in dictionary for each course
             tick_label = ['PROG1783','INFO1145','INFO1385'] #labeling each bar
@@ -96,6 +105,9 @@ while (flag3==False):
             plt.title("Progress Report: " + student[gradeG]['Firstname'] + " " + student[gradeG]['Lastname']) #Graph title
             plt.show() #calling graph to be displayed
         case 4 :
+            if len(student) == 0:
+                print("Error: Create Student Database and assign all courses to export an individual Report Card for!")
+                continue
             gradeMR = int(input("Enter the student number associated with student you would like to export a Report Card for:\n"))
             a = student[gradeMR]['Firstname']
             b = student[gradeMR]['Lastname']
@@ -110,8 +122,11 @@ while (flag3==False):
             reportF(a,b,c,d,e,f,g)
 
         case 5 :
+            if len(student) == 0:
+                print("Error: Create Student Database and assign all courses to manage students!")
+                continue
             print("Enrollment management:")
-            choice = int(input("1. Delete Student\n2. Add Student\n3. Exit to main menu\n:"))
+            choice = int(input("1. Delete Student\n2. Add Student\n3. Exit to main menu\n"))
             if choice == 1:
                 searchD = int(input("Enter the student number associated with student you would like to delete:\n"))
                 confirmD = input("Are you sure you want to delete {} {}".format(student[searchD]['Firstname'],student[searchD]['Lastname'])) #confirmation to delete, reminding user with specified user name to be deleted.
@@ -130,6 +145,9 @@ while (flag3==False):
             elif choice == 3:
                 mainmenu()    
         case 6 :
+            if len(student) == 0:
+                print("Error: Create Student Database and assign all courses to view an individual student report!")
+                continue
             gradeMR = int(input("Enter the student number associated with student you would like to view:\n"))
             a = student[gradeMR]['Firstname']
             b = student[gradeMR]['Lastname']

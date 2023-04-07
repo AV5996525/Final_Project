@@ -6,12 +6,11 @@
 #Can create as many students and assign as many as three programs: PROG1783, INFO1145, INFO1385
 #A report card may be generated and saved to a text file named 'reportcard.txt'
 #Metric data will also be available in the form of a graph for analysis
-
+from datetime import datetime
+from datetime import date
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
- #intializing empty dictionary
 student = {} #intializing empty dictionary
- #intializing empty dictionary
 def greeting(): #login function
     print("Welcome to the Conestoga Student DataBase, only permited staff members may access this database!")
     flag1 = False
@@ -59,8 +58,9 @@ def report(a,b,c,d,e,f):
     percentage = "{:.2%}".format(avg)
     print("Course average: {}\n".format(percentage).ljust(40))
     return percentage
-def reportF(a,b,c,d,e,f):
+def reportF(a,b,c,d,e,f,g):
     newFile = open("reportcard.txt", 'w')
+    newFile.write("Date/Time: {}\n".format(g)) 
     newFile.write("Student summary for {} {}\n".format(a,b).center(20))
     newFile.write("Student Number #{}\n".format(c).ljust(20))
     newFile.write("Courses:\n".ljust(20))
@@ -134,7 +134,8 @@ while (flag3==False):
             for x,p in (student.items()):
                 if x == gradeMR:
                     c = x
-            reportF(a,b,c,d,e,f)
+            g = datetime.now()        
+            reportF(a,b,c,d,e,f,g)
 
         case 5 :
             print("Enrollment management:")
@@ -149,8 +150,8 @@ while (flag3==False):
                     pass
             elif choice == 2:    
                 student[int(len(student))+1] = {}
-                firstnameC = input("Enter first name:")
-                lastnameC = input("Enter last name")
+                firstnameC = input("Enter first name:\n")
+                lastnameC = input("Enter last name:\n")
                 student[int(len(student))+1] = {"Firstname": firstnameC, "Lastname":lastnameC}#writing each dictionary value
                 print(student.items())
                 mainmenu()

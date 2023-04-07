@@ -55,10 +55,23 @@ def report(a,b,c,d,e,f):
     print('---------------------------------------'.center(40))
     print("Student Number #{}\n".format(c).ljust(40))
     print("Course grades: \n Programming - PROG1783: {}% \n IT Documentation - INFO1145: {}% \n Networking - INFO1385: {}%\n".format(d,e,f).ljust(40))
-    avg = ((float(d)+float(e)+float(f))/3)
-    percentage = "{:.0%}".format(avg)
+    avg = (((float(d)+float(e)+float(f))/3)/100)
+    percentage = "{:.2%}".format(avg)
     print("Course average: {}\n".format(percentage).ljust(40))
     return percentage
+def reportF(a,b,c,d,e,f):
+    newFile = open("reportcard.txt", 'w')
+    newFile.write("Student summary for {} {}\n".format(a,b).center(20))
+    newFile.write("Student Number #{}\n".format(c).ljust(20))
+    newFile.write("Courses:\n".ljust(20))
+    newFile.write("\n Programming - PROG1783: {}% \n IT Documentation - INFO1145: {}% \n Networking - INFO1385: {}%\n".format(d,e,f).ljust(20))
+    avg = (((float(d)+float(e)+float(f))/3)/100)
+    percentage = "{:.2%}".format(avg)
+    newFile.write("Course average: {}\n".format(percentage).ljust(20))
+    newFile.close()
+    print("The summary txt file has been succesfully written to ", os.getcwd()) #Displaying file pathway
+    print("File name: ", newFile) #displaying file name
+    return newFile
 
 def mainmenu(): #main menu function
     selection = int(input("Pick from one of the following options:\n1. Create New Classroom \n2. Grades \n3. Class Progression Chart \n4. Export Report Card\n5.Enrollment Management\n6. Quit\n"))
@@ -78,8 +91,8 @@ while (flag3==False):
             population = input("Enter the number of students in your classroom:\n")
             for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
                 student[x+1] = {} #intializing empty nested entry
-                firstname = input("Enter first name:")
-                lastname = input("Enter last name")
+                firstname = input("Enter Student #{} first name:".format(x+1))
+                lastname = input("Enter Student #{} last name".format(x+1))
                 student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student
             print(student.items())   
             continue    
@@ -111,19 +124,17 @@ while (flag3==False):
             plt.title("Progress Report: " + student[gradeG]['Firstname'] + " " + student[gradeG]['Lastname']) #Graph title
             plt.show() #calling graph to be displayed
         case 4 :
-            confirmR = input("Are you sure you want to export a report card for all students?\n")
-            if confirmR == 'Y':
-             newFile = open("reportcard.txt", 'w')    #creating 'reportcard.txt' file for writing 
-             
-            newFile.write("Student List: ")
-                
-            newFile.write('\n')
-            for x,p in (student.items()): #looping through dictionary
-                newFile.write("Student # ")
-                newFile.write("{}\t{}\n".format(str(x),str(p))) #writing each dictionary item to 'reportcard.txt' file
-            newFile.close() #closing file as per good I/O practice
-            print("The summary txt file has been succesfully written to ", os.getcwd()) #Displaying file pathway
-            print("File name: ", newFile) #displaying file name
+            gradeMR = int(input("Enter the student number associated with student you would like to export a Report Card for:\n"))
+            a = student[gradeMR]['Firstname']
+            b = student[gradeMR]['Lastname']
+            c = ''
+            d = student[gradeMR]['PROG1783']
+            e = student[gradeMR]['INFO1145']
+            f = student[gradeMR]['INFO1385']
+            for x,p in (student.items()):
+                if x == gradeMR:
+                    c = x
+            reportF(a,b,c,d,e,f)
 
         case 5 :
             print("Enrollment management:")
@@ -161,6 +172,7 @@ while (flag3==False):
         case 7 :
             exit()
             break
+            
         case _:
             print("invalid response")
 

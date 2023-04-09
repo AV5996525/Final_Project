@@ -61,8 +61,8 @@ while (flag3==False):
                         raise ValueError
                     for x in range(0,int(population)): #using for loop to create students based on size of classroom obtained from user input in variable population
                         student[x+1] = {} #intializing empty nested entry
-                        firstname = input("Enter Student #{} first name: ".format(x+1))
-                        lastname = input("Enter Student #{} last name: ".format(x+1))
+                        firstname = input("Enter Student #{} first name: ".format(x+1)).strip()
+                        lastname = input("Enter Student #{} last name: ".format(x+1)).strip()
                         student[x+1] = {"Firstname": firstname, "Lastname":lastname} #assigning user input to nested dictionary for each unique student 
                         flag5 = True  
                     break
@@ -72,14 +72,14 @@ while (flag3==False):
                     pass
                       
         case 2 :           
-            if len(student) == 0:
+            if len(student) == 0: #using len function to check student dictionary and if it is empty generate error to user 
                 print("Error: Create Student Database first! Then Assign All Grades!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             gradeM = int(input("Enter the student number associated with student you would like to review:\n"))
             
             classSel = int(input("Enter the course you wish to modify the grade for student {} {} : \n 1. PROG1783\n 2. INFO1145\n 3. INFO1385\n".format((student[gradeM]['Firstname']),(student[gradeM]['Lastname'])))) #user input to determine which course will be modified for specific user obtained from accessing dictionary key
             if classSel == 1:
-                gradeEntry = input("Enter the PROG1783 grade value:\n")
+                gradeEntry = input("Enter the PROG1783 grade value:\n") #saving user input to write grade entry  to dictionary
                 student[gradeM]['PROG1783'] = int(gradeEntry) 
 
             elif classSel == 2:
@@ -128,16 +128,17 @@ while (flag3==False):
             choice = int(input("1. Delete Student\n2. Add Student\n3. Exit to main menu\n"))
             if choice == 1:
                 searchD = int(input("Enter the student number associated with student you would like to delete:\n"))
-                confirmD = input("Are you sure you want to delete {} {}".format(student[searchD]['Firstname'],student[searchD]['Lastname'])) #confirmation to delete, reminding user with specified user name to be deleted.
-                if confirmD == 'Y':
+                confirmD = input("Are you sure you want to delete {} {} ['Y'/'N']".format(student[searchD]['Firstname'],student[searchD]['Lastname'])) #confirmation to delete, reminding user with specified user name to be deleted.
+                if confirmD == 'Y' or confirmD == 'y' or confirmD == 'YES' or confirmD == 'yes':
                     del student[searchD] #utilizing dictionary key to delete entry, obtained from user input
+                    print("Successfully deleted Student {} {}".format(student[searchD]['Firstname'],student[searchD]['Lastname']))
                     mainmenu()
-                elif confirmD == 'N':
+                elif confirmD == 'N' or  confirmD == 'n' or  confirmD == 'no' or confirmD == 'NO':
                     pass
             elif choice == 2:    
                 student[int(len(student))+1] = {}
-                firstnameC = input("Enter first name:\n")
-                lastnameC = input("Enter last name:\n")
+                firstnameC = input("Enter first name:\n").strip()
+                lastnameC = input("Enter last name:\n").strip()
                 student[int(len(student))+1] = {"Firstname": firstnameC, "Lastname":lastnameC}#writing each dictionary value
                 print(student.items())
                 mainmenu()

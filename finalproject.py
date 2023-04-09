@@ -6,7 +6,7 @@
 #Can create as many students and assign as many as three programs: PROG1783, INFO1145, INFO1385
 #A report card may be generated and saved to a custom named text file named '{}{}reportcard.txt' ,where  the Student's first name and last name will be utilized to create a custom txt file.
 #Metric data will also be available in the form of a graph for analysis
-from datetime import datetime
+from datetime import datetime #importing datetime module
 from datetime import date
 import matplotlib.pyplot as plt #importing matplotlib.pyplot module 
 import os #importing OS module 
@@ -73,7 +73,7 @@ while (flag3==False):
                       
         case 2 :           
             if len(student) == 0:
-                print("Error: Create Student Database first! Then Assign All Grades!")
+                print("Error: Create Student Database first! Then Assign All Grades!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             gradeM = int(input("Enter the student number associated with student you would like to review:\n"))
             
@@ -88,13 +88,10 @@ while (flag3==False):
             
             elif classSel == 3:
                 gradeEntry = input("Enter the INFO1385 grade value:\n")
-                student[gradeM]['INFO1385'] = int(gradeEntry) 
-            elif classSel == 4:
-                print(student.items())
-                print(student)       
+                student[gradeM]['INFO1385'] = int(gradeEntry)       
         case 3 :   
-            if len(student) == 0:
-                print("Error: Create Student Database and assign all courses to generate an individual graph for!")
+            if len(student) == 0: #using len function to check student dictionary and if it is empty generate error to user 
+                print("Error: Create Student Database and assign all courses to generate an individual graph for!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             gradeG = int(input("Enter the student number associated with student you would like to generate a graph for:\n"))
             
@@ -107,8 +104,8 @@ while (flag3==False):
             plt.title("Progress Report: " + student[gradeG]['Firstname'] + " " + student[gradeG]['Lastname']) #Graph title
             plt.show() #calling graph to be displayed
         case 4 :
-            if len(student) == 0:
-                print("Error: Create Student Database and assign all courses to export an individual Report Card for!")
+            if len(student) == 0: #using len function to check student dictionary and if it is empty generate error to user 
+                print("Error: Create Student Database and assign all courses to export an individual Report Card for!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             gradeMR = int(input("Enter the student number associated with student you would like to export a Report Card for:\n"))
             a = student[gradeMR]['Firstname']
@@ -121,11 +118,11 @@ while (flag3==False):
                 if x == gradeMR:
                     c = x
             g = datetime.now()        
-            reportF(a,b,c,d,e,f,g)
+            reportF(a,b,c,d,e,f,g) #calling report file export function and assigning values for function
 
         case 5 :
-            if len(student) == 0:
-                print("Error: Create Student Database and assign all courses to manage students!")
+            if len(student) == 0: #using len function to check student dictionary and if it is empty generate error to user 
+                print("Error: Create Student Database and assign all courses to manage students!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             print("Enrollment management:")
             choice = int(input("1. Delete Student\n2. Add Student\n3. Exit to main menu\n"))
@@ -147,8 +144,8 @@ while (flag3==False):
             elif choice == 3:
                 mainmenu()    
         case 6 :
-            if len(student) == 0:
-                print("Error: Create Student Database and assign all courses to view an individual student report!")
+            if len(student) == 0: #using len function to check student dictionary and if it is empty generate error to user 
+                print("Error: Create Student Database and assign all courses to view an individual student report!") #condition to prevent user from accessing tools with out creating a database first
                 continue
             gradeMR = int(input("Enter the student number associated with student you would like to view:\n"))
             a = student[gradeMR]['Firstname']
@@ -160,7 +157,7 @@ while (flag3==False):
             for x,p in (student.items()):
                 if x == gradeMR:
                     c = x
-            report(a,b,c,d,e,f)
+            report(a,b,c,d,e,f) #calling report function
             
         case 7 :
             exit() #Exit program
